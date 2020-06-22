@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{56CF633C-FD45-4E5D-9C94-695F4D86D089}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PortFowarding.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PortFowarding_Svr.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PortFowarding">
+        <MSBuild Projects="PortFowarding.dproj"/>
+    </Target>
+    <Target Name="PortFowarding:Clean">
+        <MSBuild Projects="PortFowarding.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PortFowarding:Make">
+        <MSBuild Projects="PortFowarding.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PortFowarding_Svr">
+        <MSBuild Projects="PortFowarding_Svr.dproj"/>
+    </Target>
+    <Target Name="PortFowarding_Svr:Clean">
+        <MSBuild Projects="PortFowarding_Svr.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PortFowarding_Svr:Make">
+        <MSBuild Projects="PortFowarding_Svr.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PortFowarding;PortFowarding_Svr"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PortFowarding:Clean;PortFowarding_Svr:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PortFowarding:Make;PortFowarding_Svr:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
