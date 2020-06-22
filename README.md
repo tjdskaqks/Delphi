@@ -8,3 +8,6 @@ Delphi Project
 
   # Delete Outlook Search
    Outlook Search list delete by Reg 
+   
+  # PortPowarding
+   Port forwarding allowed ip only
